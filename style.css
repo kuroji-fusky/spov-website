@@ -485,6 +485,8 @@ img, .outlined img, picture, svg {
   align-items: flex-start;
   text-align: left;
   cursor: pointer;
+  background: rgba(88, 101, 242, 0.15) !important;
+  border: 1.5px solid rgba(88, 101, 242, 0.3) !important;
 }
 
 .art-card .project-image,
