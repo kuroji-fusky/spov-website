@@ -11,7 +11,7 @@ html, body {
 body {
   background-color: white;
   color: black;
-  font-family: 'Comic Sans MS', Comic Sans, cursive;
+  font-family: "Unbounded", sans-serif;
 
   background-image: url("Textures/Circles.png");
   background-repeat: repeat;
@@ -116,7 +116,7 @@ body {
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
-  margin-top: 0.25rem;
+  margin-top: 1.8rem;
 }
 
 .panel-small .link-btn {
@@ -142,7 +142,89 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.35);
 }
 
+.panel-small .link-btn.active {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgb(255, 255, 255);
+  box-shadow: 0 0 12px rgba(255,255,255,0.2), inset 0 0 8px rgba(255,255,255,0.1);
+  font-weight: 600;
+}
+
 .panel-small .logo-link { display:block; text-align:center; }
+
+.panel-main .link-btn {
+  display: inline-block;
+  margin: 0.3rem 0.4rem;
+  padding: 0.4rem 0.9rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.panel-main .link-btn:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  border-color: rgba(255,255,255,0.25);
+}
+
+.panel-main .meow + .link-btn {
+  margin-top: 1rem;
+}
+
+.panel-main .link-btn + p,
+.panel-main p + .link-btn {
+  margin-top: 1.5rem;
+}
+
+.panel-main .gaming-section {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1rem;
+  background: rgba(88, 101, 242, 0.15);
+  border-radius: 12px;
+  border: 1.5px solid rgba(88, 101, 242, 0.3);
+}
+
+.panel-main .gaming-section p {
+  margin: 0 0 -0.5rem 0;
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
+}
+
+.panel-main .video-section {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 0, 0, 0.12);
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 0, 0, 0.25);
+}
+
+.panel-main .social-section {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background: rgba(29, 155, 240, 0.12);
+  border-radius: 12px;
+  border: 1.5px solid rgba(29, 155, 240, 0.25);
+}
+
+.panel-main .other-section {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.panel-main .other-section p {
+  margin: 0.2rem 0;
+  color: #fff;
+}
 .panel-small .logo-link img { transition: filter 0.12s ease, transform 0.08s ease; }
 .panel-small .logo-link:hover img,
 .panel-small .logo-link:focus img {

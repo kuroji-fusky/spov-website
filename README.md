@@ -1,2 +1,2 @@
 # SopvWasTaken.github.io
-Ma Website Hopefully
+Just an website I host using github pages :3
