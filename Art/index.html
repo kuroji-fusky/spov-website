@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sopv's silly Website :3</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Haiiii!!! Welcome to my site :3">
+  <meta property="og:title" content="Haiiii!!! Welcome to my site :3">
+  <meta property="og:description" content="Please visit it :3">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://SopvWasTaken.github.io/">
+  <meta property="og:image" content="https://SopvWasTaken.github.io/Textures/embed.png">
+  <meta property="og:image:alt" content="My fursona :3">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Haiiii!!! Welcome to my site :3">
+  <meta name="twitter:description" content="Haiiii!!! Welcome to my site :3">
+  <meta name="twitter:image" content="https://SopvWasTaken.github.io/Textures/embed.png">
+  
+</head>
+
+  <body>
+
+    <header>
+      <h1 class="rainbow">Art :3</h1>
+    </header>
+
+  <div class="centered">
+    <div class="panels">
+      <aside class="outlined panel-small">
+        <a href="../"class="logo-link"><img src="../Textures/logo.PNG" alt="logo" class="logo"></a>
+        <p class="meow" style="font-size:1.1rem;">Silly Menu</p>
+        <div class="panel-links">
+          <a class="link-btn" href="../AboutMe">About Me</a>
+          <a class="link-btn" href="../Socials">Socials</a>
+          <a class="link-btn active" href="../Art">Art</a>
+          <a class="link-btn" href="https://sopv.atabook.org/">Guestbook</a>
+          <a class="link-btn" href="../RandomProjects">Random Projects</a>
+        </div>
+      </aside>
+
+      <main class="outlined panel-main">
+        <p class="meow">Some art pieces</p>
+
+        <div class="projects-grid art-grid">
+          <div class="project-card outlined art-card" data-name="Bill Gates">
+            <img class="project-image art-image" src="Pics/BillGates.png" alt="Bill Gates">
+            <div class="project-name">Bill Gates</div>
+          </div>
+
+          <div class="project-card outlined art-card" data-name="Mario Paint">
+            <img class="project-image art-image" src="Pics/MarioPaint.png" alt="Mario Paint">
+            <div class="project-name">Mario Paint</div>
+          </div>
+
+          <div class="project-card outlined art-card" data-name="Bliss">
+            <img class="project-image art-image" src="Pics/Bliss.png" alt="Bliss">
+            <div class="project-name">Bliss</div>
+          </div>
+
+          <div class="project-card outlined art-card" data-name="Made In XP">
+            <img class="project-image art-image" src="Pics/MadeInXp.png" alt="Made In XP">
+            <div class="project-name">Made In XP</div>
+          </div>
+          
+          <!--
+          <div class="project-card outlined art-card" data-name="NAME OF ART">
+            <img class="project-image art-image" src="Pics/IMAGE_FILE.png" alt="ALT TEXT">
+            <div class="project-name">NAME OF ART</div>
+          </div>
+          -->
+          
+        </div>
+<br>
+        <div class="panel-footer">&copy; 2025 Sopv lol</div>
+      </main>
+    
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+      <div class="lightbox-content">
+        <button class="lightbox-close" aria-label="Close">×</button>
+        <img id="lightbox-image" alt="Zoomed image">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      const overlay = document.getElementById('lightbox');
+      const imgEl = document.getElementById('lightbox-image');
+      const captionEl = document.getElementById('lightbox-caption');
+      const closeBtn = overlay.querySelector('.lightbox-close');
+
+      function openLightbox(src, caption) {
+        imgEl.src = src;
+        imgEl.alt = caption || 'Image';
+        captionEl.textContent = caption || '';
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        // Animate close: keep visible while fading, then cleanup
+        overlay.classList.remove('active');
+        overlay.classList.add('closing');
+        overlay.setAttribute('aria-hidden', 'true');
+
+        const finish = () => {
+          overlay.classList.remove('closing');
+          imgEl.src = '';
+          captionEl.textContent = '';
+          document.body.style.overflow = '';
+        };
+
+        // Prefer transitionend; fallback timer if not fired
+        const onEnd = (e) => {
+          if (e.target === overlay && e.propertyName === 'opacity') {
+            overlay.removeEventListener('transitionend', onEnd);
+            finish();
+          }
+        };
+        overlay.addEventListener('transitionend', onEnd);
+        setTimeout(finish, 220);
+      }
+
+      document.querySelectorAll('.art-card').forEach(card => {
+        const img = card.querySelector('img');
+        const name = card.getAttribute('data-name') || img?.alt || '';
+        const open = () => img && openLightbox(img.src, name);
+        card.addEventListener('click', open);
+        // Also allow Enter key when card is focused
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(); });
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeLightbox();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
+  </body>
+</html>
