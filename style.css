@@ -1,3 +1,14 @@
+/* make sizing predictable and avoid accidental overflow */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: white;
   color: black;
@@ -7,6 +18,9 @@ body {
   background-repeat: repeat;
   background-position: top left;
   background-attachment: scroll;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 0;
 }
 
 .rainbow {
@@ -39,10 +53,80 @@ body {
   color: #FAFAFA;
   padding: 1rem 1.2rem;
   border-radius: 12px;
-  margin: 0.6rem auto;
-  max-width: 900px;
   -webkit-font-smoothing: antialiased;
 }
+
+.centered {
+  margin: 0.6rem auto;
+  max-width: 900px;
+  width: 100%;
+  padding: 0 0.6rem;
+}
+
+.panels {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.panel-small {
+  flex: 0 0 20%;
+  min-width: 0;
+}
+
+.panel-main {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* logo in the small panel */
+.panel-small .logo {
+  display: block;
+  margin: 0.4rem auto 0.35rem;
+  width: 75%;
+  max-width: 140px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* panel links container */
+.panel-small .panel-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+/* button-style links (remove blue color/underline) */
+.panel-small .link-btn {
+  display: inline-block;
+  width: 90%;
+  max-width: 200px;
+  text-align: center;
+  padding: 0.45rem 0.6rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: background 0.12s ease, transform 0.08s ease, filter 0.12s ease;
+}
+
+/* darker on hover for these button links; Quick heading is unaffected */
+.panel-small .link-btn:hover {
+  background: rgba(0,0,0,0.22);
+  transform: translateY(-1px);
+  filter: brightness(0.7);
+  border-color: rgba(255,255,255,0.04);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+}
+
+/* logo link should not get the button styles */
+.panel-small .logo-link { display:block; text-align:center; }
+.panel-small .logo-link:hover { filter: none; }
 
 .outlined p,
 .outlined li {
@@ -64,7 +148,26 @@ body {
 }
 
 @media (max-width: 600px) {
-  .outlined { padding: 0.8rem; margin: 0.4rem; }
+  .outlined { padding: 0.8rem; }
   .outlined p, .outlined li { font-size: 1rem; }
+  .panels { flex-direction: column; }
+  .panel-small { order: -1; width: 100%; flex: none; }
+  .panel-main { width: 100%; }
+}
+
+/* Reduce huge header size at narrower viewports to avoid overflow */
+@media (max-width: 900px) {
+  .rainbow { font-size: 3rem; }
+}
+
+@media (max-width: 600px) {
+  .rainbow { font-size: 2.2rem; }
+}
+
+/* make images and embeds responsive */
+img, .outlined img, picture, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
