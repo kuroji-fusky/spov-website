@@ -42,6 +42,15 @@
           <a class="link-btn" href="https://sopv.atabook.org/">Guestbook</a>
           <a class="link-btn" href="../RandomProjects">Random Projects</a>
         </div>
+        
+        <div class="lastfm-widget" id="lastfm-widget">
+          <p class="lastfm-status" id="lastfm-status">Loading...</p>
+          <div class="lastfm-content" id="lastfm-content" style="display:none;">
+            <img class="lastfm-cover" id="lastfm-cover" alt="Album cover">
+            <p class="lastfm-track" id="lastfm-track"></p>
+            <p class="lastfm-artist" id="lastfm-artist"></p>
+          </div>
+        </div>
       </aside>
 
       <div class="right-column">
@@ -98,6 +107,57 @@
   </div>
   </body>
   <script>
+    // Last.fm Widget
+    (function() {
+      const API_URL = 'https://lastfm-last-played.powerpcfan.xyz/SopvWasTaken';
+      
+      async function updateLastFm() {
+        try {
+          const response = await fetch(API_URL);
+          const data = await response.json();
+          
+          const statusEl = document.getElementById('lastfm-status');
+          const contentEl = document.getElementById('lastfm-content');
+          const coverEl = document.getElementById('lastfm-cover');
+          const trackEl = document.getElementById('lastfm-track');
+          const artistEl = document.getElementById('lastfm-artist');
+          
+          if (data && data.track) {
+            // Update status text
+            statusEl.textContent = data.track['@attr']?.nowplaying === 'true' 
+              ? 'Listening right now' 
+              : 'Last music played';
+            
+            // Show content
+            contentEl.style.display = 'block';
+            
+            // Update album art (use extralarge if available)
+            const images = data.track.image;
+            let coverUrl = '';
+            if (images && images.length > 0) {
+              const extraLarge = images.find(img => img.size === 'extralarge');
+              coverUrl = extraLarge ? extraLarge['#text'] : images[images.length - 1]['#text'];
+            }
+            coverEl.src = coverUrl || 'data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"174\" height=\"174\"%3E%3Crect fill=\"%23222\" width=\"174\" height=\"174\"/%3E%3C/svg%3E';
+            coverEl.alt = data.track.name + ' cover';
+            
+            // Update track name and artist
+            trackEl.textContent = data.track.name || 'Unknown Track';
+            artistEl.textContent = data.track.artist['#text'] || data.track.artist || 'Unknown Artist';
+          }
+        } catch (error) {
+          console.error('Failed to fetch Last.fm data:', error);
+          document.getElementById('lastfm-status').textContent = 'Unable to load';
+        }
+      }
+      
+      // Initial load
+      updateLastFm();
+      
+      // Update every 30 seconds
+      setInterval(updateLastFm, 30000);
+    })();
+
     function copyToClipboard() {
       const codeBox = document.getElementById('codeBox');
       codeBox.select();

@@ -537,4 +537,57 @@ img, .outlined img, picture, svg {
   border-color: rgba(88, 101, 242, 0.7);
 }
 
+/* Last.fm Widget */
+.lastfm-widget {
+  margin-top: 1.5rem;
+  padding: 0.8rem;
+  background: rgba(88, 86, 214, 0.12);
+  border: 1.5px solid rgba(88, 86, 214, 0.4);
+  border-radius: 12px;
+  text-align: center;
+}
 
+.lastfm-status {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lastfm-content {
+  margin-top: 0.6rem;
+}
+
+.lastfm-cover {
+  width: 100%;
+  max-width: 140px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  display: block;
+}
+
+.lastfm-track {
+  margin: 0.6rem 0 0.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.lastfm-artist {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
