@@ -86,13 +86,13 @@
           <a class="link-btn" href="https://nookipedia.com/wiki/Bob"><img src="../Buttons/bob.gif" alt="Bob"></a>
         </div>
         <div class="panel-buttons">
-          <a class="link-btn" href="https://en.wikipedia.org/wiki/Transgender_rights_movement"><img src="../Buttons/trans.gif" alt="Trans Rights"></a>
-          <a class="link-btn" href="https://sopv.atabook.org/"><img src="../Buttons/signguest.gif" alt="Sign My Guestbook"></a>
-          <a class="link-btn" href="https://www.last.fm/user/SopvWasTaken"><img src="../Buttons/lastfm.gif" alt="Last.fm"></a>
-          <a class="link-btn" href="https://crosstalk.im/profile/+Sopv"><img src="../Buttons/crosstalk.gif" alt="Crosstalk"></a>
           <a class="link-btn" href="https://figgy.oops.wtf/"><img src="../Buttons/figgy.gif" alt="Figgy"></a>
           <a class="link-btn" href="https://wamwoowam.co.uk/"><img src="../Buttons/wam.gif" alt="Wam"></a>
           <a class="link-btn" href="https://mattkc.com/"><img src="../Buttons/mkc.gif" alt="MattKC"></a>
+          <a class="link-btn" href="https://powerpcfan.xyz/"><img src="../Buttons/ppcfan.png" alt="PowerPcFan"></a>
+          <a class="link-btn" href="https://sopv.atabook.org/"><img src="../Buttons/signguest.gif" alt="Sign My Guestbook"></a>
+          <a class="link-btn" href="https://www.last.fm/user/SopvWasTaken"><img src="../Buttons/lastfm.gif" alt="Last.fm"></a>
+          <a class="link-btn" href="https://crosstalk.im/profile/+Sopv"><img src="../Buttons/crosstalk.gif" alt="Crosstalk"></a>
         </div>
         <div class="panel-buttons">
           <a class="link-btn" href="https://store.steampowered.com/app/1761390/Hatsune_Miku_Project_DIVA_Mega_Mix/"><img src="../Buttons/miku.gif" alt="Miku"></a>
@@ -103,13 +103,21 @@
           <a class="link-btn" href="https://en.wikipedia.org/wiki/Wii"><img src="../Buttons/wii.gif" alt="Wii"></a>
           <a class="link-btn" href="https://en.wikipedia.org/wiki/Zune"><img src="../Buttons/zune.png" alt="Zune"></a>
         </div>
+        <div class="panel-buttons">
+          <a class="link-btn" href="https://www.youtube.com/watch?v=FtutLA63Cp8"><img src="../Buttons/badapple.gif" alt="Bad Apple"></a>
+          <a class="link-btn" href="https://meow.camera/"><img src="../Buttons/cat.gif" alt="Cat" width="88"></a>
+          <a class="link-btn" href="https://crocdb.net/"><img src="../Buttons/piracy.gif" alt="Piracy"></a>
+          <a class="link-btn" href="https://store.steampowered.com/"><img src="../Buttons/steam.gif" alt="Steam"></a>
+          <a class="link-btn" href="https://ublockorigin.com/"><img src="../Buttons/ublock.png" alt="uBlock Orgin"></a>
+          <a class="link-btn" href="https://code.visualstudio.com/"><img src="../Buttons/vsc.gif" alt="Visual Studio Code"></a>
+          <a class="link-btn" href="https://en.wikipedia.org/wiki/Transgender_rights_movement"><img src="../Buttons/trans.gif" alt="Trans Rights"></a>
+        </div>
       </aside>
       </div>
     </div>
   </div>
   </body>
   <script>
-    // Last.fm Widget
     (function() {
       const API_URL = 'https://lastfm-last-played.powerpcfan.xyz/SopvWasTaken';
       
@@ -126,15 +134,12 @@
           const linkEl = document.getElementById('lastfm-link');
           
           if (data && data.track) {
-            // Update status text
             statusEl.textContent = data.track['@attr']?.nowplaying === 'true' 
               ? 'Listening right now' 
               : 'Last music played';
             
-            // Show content
             contentEl.style.display = 'block';
             
-            // Update album art (use extralarge if available)
             const images = data.track.image;
             let coverUrl = '';
             if (images && images.length > 0) {
@@ -144,16 +149,13 @@
             coverEl.src = coverUrl || 'data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"174\" height=\"174\"%3E%3Crect fill=\"%23222\" width=\"174\" height=\"174\"/%3E%3C/svg%3E';
             coverEl.alt = data.track.name + ' cover';
             
-            // Update track name and artist
             trackEl.textContent = data.track.name || 'Unknown Track';
             artistEl.textContent = data.track.artist['#text'] || data.track.artist || 'Unknown Artist';
             
-            // Update link to track page on Last.fm
             const trackUrl = data.track.url;
             if (trackUrl) {
               linkEl.href = trackUrl;
             } else {
-              // Fallback to artist page if track URL not available
               const artistName = (data.track.artist['#text'] || data.track.artist || 'SopvWasTaken').replace(/\s+/g, '+');
               const trackName = (data.track.name || '').replace(/\s+/g, '+');
               if (trackName) {
@@ -167,10 +169,8 @@
         }
       }
       
-      // Initial load
       updateLastFm();
       
-      // Update every 30 seconds
       setInterval(updateLastFm, 30000);
     })();
 
@@ -179,7 +179,6 @@
       codeBox.select();
       document.execCommand('copy');
       
-      // Feedback
       const btn = event.target;
       const original = btn.textContent;
       btn.textContent = 'Copied!';
@@ -188,7 +187,6 @@
       }, 1500);
     }
 
-    // Live Vilnius clock in right column
     (function() {
       const el = document.getElementById('vilniusClock');
       if (!el) return;
