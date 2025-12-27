@@ -27,7 +27,7 @@
   <body>
 
     <header>
-      <h1 class="rainbow">Art :3</h1>
+      <h1 class="rainbow">About Me :3</h1>
     </header>
 
   <div class="centered">
@@ -36,9 +36,9 @@
         <a href="../"class="logo-link"><img src="../Textures/logo.PNG" alt="logo" class="logo"></a>
         <p class="meow" style="font-size:1.1rem;">Silly Menu</p>
         <div class="panel-links">
-          <a class="link-btn" href="../AboutMe">About Me</a>
+          <a class="link-btn active" href="../AboutMe">About Me</a>
           <a class="link-btn" href="../Socials">Socials</a>
-          <a class="link-btn active" href="../Art">Art</a>
+          <a class="link-btn" href="../Art">Art</a>
           <a class="link-btn" href="https://sopv.atabook.org/">Guestbook</a>
           <a class="link-btn" href="../RandomProjects">Random Projects</a>
         </div>
@@ -46,36 +46,20 @@
 
       <div class="right-column">
         <main class="outlined panel-main">
-        <p class="meow">Some art pieces</p>
+        <p class="meow">So about me hmm</p>
+        <p>I'm 18 years old he/him from Lithuania</p>
+        <p>My local time: <span id="vilniusClock" style="display:inline-block;padding:0.25rem 0.6rem;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.3);border-radius:12px;min-width:92px;text-align:center;font-weight:700;font-size:0.85rem;">--:--:--</span></p>
+        <p>I'm femboy protogen. Who enjoys having and using old tech.</p>
+        <p>I like exploring obscure tech. My strangest would be Panasonic 3DO or PSX (PS2 DVR).</p>
+        <p>In free time do like edit videos, play games, listen to music, chat with people online.</p>
+        <p>I'm newbie to art so drawings not really good.</p>
+        <p>Feel free to contact me on socials :3</p> 
 
-        <div class="projects-grid art-grid">
-          <div class="project-card outlined art-card" data-name="Bill Gates">
-            <img class="project-image art-image" src="Pics/BillGates.png" alt="Bill Gates">
-            <div class="project-name">Bill Gates</div>
-          </div>
-
-          <div class="project-card outlined art-card" data-name="Mario Paint">
-            <img class="project-image art-image" src="Pics/MarioPaint.png" alt="Mario Paint">
-            <div class="project-name">Mario Paint</div>
-          </div>
-
-          <div class="project-card outlined art-card" data-name="Bliss">
-            <img class="project-image art-image" src="Pics/Bliss.png" alt="Bliss">
-            <div class="project-name">Bliss</div>
-          </div>
-
-          <div class="project-card outlined art-card" data-name="Made In XP">
-            <img class="project-image art-image" src="Pics/MadeInXp.png" alt="Made In XP">
-            <div class="project-name">Made In XP</div>
-          </div>
-          
-          <!--
-          <div class="project-card outlined art-card" data-name="NAME OF ART">
-            <img class="project-image art-image" src="Pics/IMAGE_FILE.png" alt="ALT TEXT">
-            <div class="project-name">NAME OF ART</div>
-          </div>
-          -->
-          
+        <div class="notepad-section">
+          <p style="text-align: center; margin: 0 0 -0.5rem 0; font-weight: 600;">Add me to your website :3</p>
+          <textarea id="codeBox" class="notepad" readonly><a href="https://sopv.space/"><img src="https://SopvWasTaken.github.io/Textures/Sopv.gif" alt="Sopv's Website"></a></textarea>
+          <button class="notepad-copy-btn" onclick="copyToClipboard()">Copy Code</button>
+          <a href="../"><img src="../Textures/Sopv.gif" alt="Sopv's Website"></a>
         </div>
 <br>
         <div class="panel-footer">&copy; 2025 Sopv lol</div>
@@ -110,74 +94,39 @@
         </div>
       </aside>
       </div>
-    
-    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
-      <div class="lightbox-content">
-        <button class="lightbox-close" aria-label="Close">×</button>
-        <img id="lightbox-image" alt="Zoomed image">
-        <div id="lightbox-caption" class="lightbox-caption"></div>
-      </div>
-    </div>
     </div>
   </div>
+  </body>
   <script>
+    function copyToClipboard() {
+      const codeBox = document.getElementById('codeBox');
+      codeBox.select();
+      document.execCommand('copy');
+      
+      // Feedback
+      const btn = event.target;
+      const original = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => {
+        btn.textContent = original;
+      }, 1500);
+    }
+
+    // Live Vilnius clock in right column
     (function() {
-      const overlay = document.getElementById('lightbox');
-      const imgEl = document.getElementById('lightbox-image');
-      const captionEl = document.getElementById('lightbox-caption');
-      const closeBtn = overlay.querySelector('.lightbox-close');
+      const el = document.getElementById('vilniusClock');
+      if (!el) return;
 
-      function openLightbox(src, caption) {
-        imgEl.src = src;
-        imgEl.alt = caption || 'Image';
-        captionEl.textContent = caption || '';
-        overlay.classList.add('active');
-        overlay.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeLightbox() {
-        // Animate close: keep visible while fading, then cleanup
-        overlay.classList.remove('active');
-        overlay.classList.add('closing');
-        overlay.setAttribute('aria-hidden', 'true');
-
-        const finish = () => {
-          overlay.classList.remove('closing');
-          imgEl.src = '';
-          captionEl.textContent = '';
-          document.body.style.overflow = '';
-        };
-
-        // Prefer transitionend; fallback timer if not fired
-        const onEnd = (e) => {
-          if (e.target === overlay && e.propertyName === 'opacity') {
-            overlay.removeEventListener('transitionend', onEnd);
-            finish();
-          }
-        };
-        overlay.addEventListener('transitionend', onEnd);
-        setTimeout(finish, 220);
-      }
-
-      document.querySelectorAll('.art-card').forEach(card => {
-        const img = card.querySelector('img');
-        const name = card.getAttribute('data-name') || img?.alt || '';
-        const open = () => img && openLightbox(img.src, name);
-        card.addEventListener('click', open);
-        // Also allow Enter key when card is focused
-        card.setAttribute('tabindex', '0');
-        card.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(); });
+      const fmt = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Vilnius',
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
       });
 
-      closeBtn.addEventListener('click', closeLightbox);
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeLightbox();
-      });
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
-      });
+      const update = () => {
+        el.textContent = fmt.format(new Date());
+      };
+      update();
+      setInterval(update, 1000);
     })();
   </script>
-  </body>
 </html>

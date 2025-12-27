@@ -309,7 +309,6 @@ img, .outlined img, picture, svg {
   gap: 1rem;
   margin-top: 1rem;
 }
-/* Art page: masonry-style layout with columns, uneven grid allowed */
 .art-grid {
   display: block;
   column-count: 2;
@@ -421,7 +420,6 @@ img, .outlined img, picture, svg {
   pointer-events: auto;
 }
 
-/* Keep visible during close to show fade */
 .lightbox.closing {
   opacity: 0;
   visibility: visible;
@@ -479,7 +477,6 @@ img, .outlined img, picture, svg {
   background: rgba(255,255,255,0.28);
 }
 
-/* Art page: content-sized cards to avoid empty space */
 .art-card {
   height: auto;
   align-items: flex-start;
@@ -494,6 +491,50 @@ img, .outlined img, picture, svg {
   height: auto;
   max-width: 100%;
   object-fit: contain;
+}
+
+.notepad-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 0.8rem;
+}
+
+.notepad {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.8rem;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(88, 101, 242, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.85rem;
+  resize: none;
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.notepad-copy-btn {
+  padding: 0.5rem 1.2rem;
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.3), rgba(88, 101, 242, 0.2));
+  color: #fff;
+  border: 1.5px solid rgba(88, 101, 242, 0.5);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.notepad-copy-btn:hover {
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.4), rgba(88, 101, 242, 0.3));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+  border-color: rgba(88, 101, 242, 0.7);
 }
 
 
