@@ -44,12 +44,14 @@
         </div>
         
         <div class="lastfm-widget" id="lastfm-widget">
-          <p class="lastfm-status" id="lastfm-status">Loading...</p>
-          <div class="lastfm-content" id="lastfm-content" style="display:none;">
-            <img class="lastfm-cover" id="lastfm-cover" alt="Album cover">
-            <p class="lastfm-track" id="lastfm-track"></p>
-            <p class="lastfm-artist" id="lastfm-artist"></p>
-          </div>
+          <a href="https://www.last.fm/user/SopvWasTaken" id="lastfm-link" style="display: block;">
+            <p class="lastfm-status" id="lastfm-status">Loading...</p>
+            <div class="lastfm-content" id="lastfm-content" style="display:none;">
+              <img class="lastfm-cover" id="lastfm-cover" alt="Album cover">
+              <p class="lastfm-track" id="lastfm-track"></p>
+              <p class="lastfm-artist" id="lastfm-artist"></p>
+            </div>
+          </a>
         </div>
       </aside>
 
@@ -132,6 +134,7 @@
           const coverEl = document.getElementById('lastfm-cover');
           const trackEl = document.getElementById('lastfm-track');
           const artistEl = document.getElementById('lastfm-artist');
+          const linkEl = document.getElementById('lastfm-link');
           
           if (data && data.track) {
             // Update status text
@@ -155,6 +158,19 @@
             // Update track name and artist
             trackEl.textContent = data.track.name || 'Unknown Track';
             artistEl.textContent = data.track.artist['#text'] || data.track.artist || 'Unknown Artist';
+            
+            // Update link to track page on Last.fm
+            const trackUrl = data.track.url;
+            if (trackUrl) {
+              linkEl.href = trackUrl;
+            } else {
+              // Fallback to artist page if track URL not available
+              const artistName = (data.track.artist['#text'] || data.track.artist || 'SopvWasTaken').replace(/\s+/g, '+');
+              const trackName = (data.track.name || '').replace(/\s+/g, '+');
+              if (trackName) {
+                linkEl.href = `https://www.last.fm/search?q=${trackName}+${artistName}`;
+              }
+            }
           }
         } catch (error) {
           console.error('Failed to fetch Last.fm data:', error);
