@@ -80,7 +80,6 @@ body {
   min-width: 0;
 }
 
-/* logo in the small panel */
 .panel-small .logo {
   display: block;
   margin: 0.4rem auto 0.35rem;
@@ -90,7 +89,6 @@ body {
   border-radius: 8px;
 }
 
-/* panel links container */
 .panel-small .panel-links {
   display: flex;
   flex-direction: column;
@@ -99,7 +97,6 @@ body {
   margin-top: 0.25rem;
 }
 
-/* button-style links (remove blue color/underline) */
 .panel-small .link-btn {
   display: inline-block;
   width: 90%;
@@ -115,7 +112,6 @@ body {
   transition: background 0.12s ease, transform 0.08s ease, filter 0.12s ease;
 }
 
-/* darker on hover for these button links; Quick heading is unaffected */
 .panel-small .link-btn:hover {
   background: rgba(0,0,0,0.22);
   transform: translateY(-1px);
@@ -124,9 +120,14 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.35);
 }
 
-/* logo link should not get the button styles */
 .panel-small .logo-link { display:block; text-align:center; }
-.panel-small .logo-link:hover { filter: none; }
+.panel-small .logo-link img { transition: filter 0.12s ease, transform 0.08s ease; }
+.panel-small .logo-link:hover img,
+.panel-small .logo-link:focus img {
+  filter: brightness(0.7);
+  transform: translateY(-1px);
+  cursor: pointer;
+}
 
 .outlined p,
 .outlined li {
@@ -155,7 +156,6 @@ body {
   .panel-main { width: 100%; }
 }
 
-/* Reduce huge header size at narrower viewports to avoid overflow */
 @media (max-width: 900px) {
   .rainbow { font-size: 3rem; }
 }
@@ -164,10 +164,22 @@ body {
   .rainbow { font-size: 2.2rem; }
 }
 
-/* make images and embeds responsive */
 img, .outlined img, picture, svg {
   max-width: 100%;
   height: auto;
   display: block;
 }
+
+@media (min-width: 900px) {
+  footer { position: static; }
+}
+.panels > footer {
+  flex: 1 1 100%;
+  width: calc(100% - 20% - 1rem);
+  margin-left: calc(20% + 1rem);
+  margin-top: 1rem;
+  padding: 0.75rem 0;
+  text-align: right;
+}
+
 
