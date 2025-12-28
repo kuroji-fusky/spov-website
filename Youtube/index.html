@@ -27,7 +27,7 @@
   <body>
 
     <header>
-      <h1 class="rainbow">About Me :3</h1>
+      <h1 class="rainbow">Youtube :3</h1>
     </header>
 
   <div class="centered">
@@ -36,9 +36,9 @@
         <a href="../"class="logo-link"><img src="../Textures/logo.PNG" alt="logo" class="logo"></a>
         <p class="meow" style="font-size:1.1rem;">Silly Menu</p>
         <div class="panel-links">
-          <a class="link-btn active" href="../AboutMe">About Me</a>
+          <a class="link-btn" href="../AboutMe">About Me</a>
           <a class="link-btn" href="../Socials">Socials</a>
-          <a class="link-btn" href="../Youtube">Youtube</a>
+          <a class="link-btn active" href="../Youtube">Youtube</a>
           <a class="link-btn" href="../Art">Art</a>
           <a class="link-btn" href="https://sopv.atabook.org/">Guestbook</a>
           <a class="link-btn" href="../RandomProjects">Random Projects</a>
@@ -57,23 +57,37 @@
       </aside>
 
       <div class="right-column">
-        <main class="outlined panel-main">
-        <p class="meow">So about me hmm</p>
-        <p>I'm 18 years old he/him from Lithuania</p>
-        <p>My local time: <span id="vilniusClock" style="display:inline-block;padding:0.25rem 0.6rem;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.3);border-radius:12px;min-width:92px;text-align:center;font-weight:700;font-size:0.85rem;">--:--:--</span></p>
-        <p>I'm femboy protogen. Who enjoys having and using old tech.</p>
-        <p>I like exploring obscure tech. My strangest would be Panasonic 3DO or PSX (PS2 DVR).</p>
-        <p>In free time do like edit videos, play games, listen to music, chat with people online.</p>
-        <p>I'm newbie to art so drawings not really good.</p>
-        <p>Feel free to contact me on socials :3</p> 
+      <main class="outlined panel-main">
+        <p class="meow">My Youtube Videos :3</p>
 
-        <div class="notepad-section">
-          <p style="text-align: center; margin: 0 0 -0.5rem 0; font-weight: 600;">Add me to your website :3</p>
-          <textarea id="codeBox" class="notepad" readonly><a href="https://sopv.space/"><img src="https://SopvWasTaken.github.io/Textures/Sopv.gif" alt="Sopv's Website"></a></textarea>
-          <button class="notepad-copy-btn" onclick="copyToClipboard()">Copy Code</button>
-          <a href="../"><img src="../Textures/Sopv.gif" alt="Sopv's Website"></a>
+        <div class="youtube-grid">
+         
+          <div class="youtube-card outlined">
+            <div class="youtube-video">
+              <iframe src="https://www.youtube.com/embed/aXiKZ_ec50w?si=pd-5LyQsr7HyVHsT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="youtube-title">I Attempted to Install Windows 12 on a Smart Toaster</p>
+          </div>
+
+          <div class="youtube-card outlined">
+            <div class="youtube-video">
+              <iframe src="https://www.youtube.com/embed/JtkCy77K8Cs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="youtube-title">@Bealyread discord funny moments</p>
+          </div>
+
+           <!--
+          <div class="youtube-card outlined">
+            <div class="youtube-video">
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="youtube-title">Video Title Here</p>
+          </div>
+          -->
+
         </div>
-<br>
+        
+        <br>
         <div class="panel-footer">&copy; 2025 Sopv lol</div>
       </main>
       <aside class="outlined buttons-panel">
@@ -117,7 +131,6 @@
       </div>
     </div>
   </div>
-  </body>
   <script>
     (function() {
       const API_URL = 'https://lastfm-last-played.powerpcfan.xyz/SopvWasTaken';
@@ -147,7 +160,7 @@
               const extraLarge = images.find(img => img.size === 'extralarge');
               coverUrl = extraLarge ? extraLarge['#text'] : images[images.length - 1]['#text'];
             }
-            coverEl.src = coverUrl || 'data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"174\" height=\"174\"%3E%3Crect fill=\"%23222\" width=\"174\" height=\"174\"/%3E%3C/svg%3E';
+            coverEl.src = coverUrl || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="174" height="174"%3E%3Crect fill="%23222" width="174" height="174"/%3E%3C/svg%3E';
             coverEl.alt = data.track.name + ' cover';
             
             trackEl.textContent = data.track.name || 'Unknown Track';
@@ -159,9 +172,7 @@
             } else {
               const artistName = (data.track.artist['#text'] || data.track.artist || 'SopvWasTaken').replace(/\s+/g, '+');
               const trackName = (data.track.name || '').replace(/\s+/g, '+');
-              if (trackName) {
-                linkEl.href = `https://www.last.fm/search?q=${trackName}+${artistName}`;
-              }
+              linkEl.href = `https://www.last.fm/music/${artistName}/_/${trackName}`;
             }
           }
         } catch (error) {
@@ -174,34 +185,6 @@
       
       setInterval(updateLastFm, 10000);
     })();
-
-    function copyToClipboard() {
-      const codeBox = document.getElementById('codeBox');
-      codeBox.select();
-      document.execCommand('copy');
-      
-      const btn = event.target;
-      const original = btn.textContent;
-      btn.textContent = 'Copied!';
-      setTimeout(() => {
-        btn.textContent = original;
-      }, 1500);
-    }
-
-    (function() {
-      const el = document.getElementById('vilniusClock');
-      if (!el) return;
-
-      const fmt = new Intl.DateTimeFormat('en-GB', {
-        timeZone: 'Europe/Vilnius',
-        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
-      });
-
-      const update = () => {
-        el.textContent = fmt.format(new Date());
-      };
-      update();
-      setInterval(update, 1000);
-    })();
   </script>
+  </body>
 </html>
