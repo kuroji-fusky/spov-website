@@ -95,6 +95,59 @@ body {
   padding: 0.75rem !important;
 }
 
+.audio-panel {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0.75rem !important;
+  text-align: center;
+}
+
+.audio-panel audio {
+  width: 100%;
+  height: 32px;
+}
+
+.gif-panel {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.sliding-gif {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  animation: slideRightToLeft 3s linear infinite;
+}
+
+@keyframes slideRightToLeft {
+  0% {
+    right: -200px;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+.cat-text {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ff3b30, #ff9500, #ffcc00, #34c759, #5ac8fa, #007aff, #5856d6, #ff3b30);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: rainbow 6s linear infinite;
+}
+
 .buttons-panel .panel-buttons {
   display: flex;
   gap: 0.5rem;
